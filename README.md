@@ -37,7 +37,7 @@
 
 1. Subindo os containers
   * Rode os comandos que seguem no terminal 
-  * Vá até o diretorio aonde se encontra o compose.yaml e rode o comando 
+  * Vá até o diretorio aonde se encontra o docker-compose.yaml e rode o comando 
   
         `docker run --name kafka_stream_data -p 9092:9092 kafka`
   
