@@ -22,7 +22,7 @@ public class Controller {
 	@Autowired
 	private CustomerService service;
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/{email}")
 	public ResponseEntity<String> deleteData(
 			@RequestHeader("correlation-id") String correlationId,
 			@PathVariable String email) {

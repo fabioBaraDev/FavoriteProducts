@@ -10,7 +10,7 @@ public class Customer {
 	
 	@Getter @Setter
 	private String email;
-
+	
 	public Customer() {
 	}
 
@@ -24,7 +24,7 @@ public class Customer {
 	public String toString() {
 		final StringBuffer sb = new StringBuffer("Customer{");
 		sb.append("name='").append(nome).append('\'');
-		sb.append(", dept='").append(email).append('\'');
+		sb.append(", email='").append(email).append('\'');
 		sb.append('}');
 		return sb.toString();
 	}

@@ -1,12 +1,14 @@
 package br.com.magalu.service;
 
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+
 import br.com.magalu.model.Customer;
 
 public interface CustomerService {
 
-	void save(Customer data);
+	void save(ConsumerRecord<String, Customer> customer);
 
-	void delete(Customer data);
+	void delete(ConsumerRecord<String, Customer> customer);
 
-	void update(Customer data);
+	void update(ConsumerRecord<String, Customer> customer);
 }
