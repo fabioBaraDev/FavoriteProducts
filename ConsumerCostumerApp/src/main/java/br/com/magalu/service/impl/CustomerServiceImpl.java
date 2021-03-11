@@ -94,7 +94,7 @@ public class CustomerServiceImpl implements CustomerService {
 		var isValid = true;
 
 		for (CustomerRedisEntity row : loop) {
-			if (row.getEmail().equals(data.getEmail()))
+			if (null != row && row.getEmail().equals(data.getEmail()))
 				isValid = false;
 		}
 

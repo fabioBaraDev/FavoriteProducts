@@ -23,6 +23,10 @@
 2. Docker instalando/executando localmente 
 3. Eclipse com plugin Lombok instalado
 
+# Documentação das APIs 
+  * (API de persistência de Clientes) `http://localhost:8080/swagger-ui.html`
+  * (API de consulta de Clientes) `http://localhost:8081/swagger-ui.html`
+
 # Como executar o projeto em modo debug 
 
 1. Subindo os containers
@@ -39,9 +43,9 @@
   
   * suba os BDs de cache 
 
-        `docker run --name costumer_redis -p 6380:6380 redis`
+        `docker run -it --name customer_cache -p 6379:6379 redis:5.0.3`
   
-        `docker run --name products_redis -p 6379:6380 redis`
+        `docker run -it --name product_cache -p 6380:6380 redis:5.0.3`
 
 # Arquitetura da solução 
 
