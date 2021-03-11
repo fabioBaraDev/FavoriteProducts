@@ -24,8 +24,14 @@
 3. Eclipse com plugin Lombok instalado
 
 # Documentação das APIs 
-  * (API de persistência de Clientes) `http://localhost:8080/swagger-ui.html`
-  * (API de consulta de Clientes) `http://localhost:8081/swagger-ui.html`
+  * (API de persistência de Clientes) 
+
+        `http://localhost:8080/swagger-ui.html`
+
+  * (API de consulta de Clientes) 
+
+        `http://localhost:8081/swagger-ui.html`
+
 
 # Como executar o projeto em modo debug 
 
