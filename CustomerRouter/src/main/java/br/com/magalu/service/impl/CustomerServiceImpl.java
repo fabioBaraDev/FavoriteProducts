@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.google.gson.GsonBuilder;
 
 import br.com.magalu.dto.RequestDTO;
-import br.com.magalu.kafka.impl.KafkaDispatcherService;
+import br.com.magalu.kafka.KafkaDispatcherService;
 import br.com.magalu.service.CustomerService;
 
 @Service

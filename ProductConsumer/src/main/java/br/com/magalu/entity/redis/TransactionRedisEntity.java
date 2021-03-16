@@ -7,7 +7,7 @@ import org.springframework.data.redis.core.RedisHash;
 import lombok.Getter;
 import lombok.Setter;
 
-@RedisHash("Customer")
+@RedisHash("Status")
 public class TransactionRedisEntity  implements Serializable{
 
 	private static final long serialVersionUID = -6332043978101624694L;

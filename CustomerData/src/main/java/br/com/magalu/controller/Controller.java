@@ -16,7 +16,7 @@ import br.com.magalu.service.CostumerService;
 
 @RestController
 @RequestMapping("costumer")
-public class Constroller {
+public class Controller {
 
 	@Autowired
 	private CostumerService service;

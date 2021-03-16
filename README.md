@@ -28,9 +28,15 @@
 
         `http://localhost:8080/swagger-ui.html`
 
+  * (API de persistência de Produtos) 
+
+        `http://localhost:8082/swagger-ui.html`
+
   * (API de consulta de Clientes) 
 
         `http://localhost:8081/swagger-ui.html`
+
+
 
 
 # Como executar o projeto em modo debug 
@@ -40,13 +46,23 @@
   * Vá até o diretorio aonde se encontra o docker-compose.yaml e rode o comando 
   
         `docker run --name kafka_stream_data -p 9092:9092 kafka`
+
+        `docker run --name kafka_stream_product -p 9093:9093 kafka`
   
   * suba os BDs execute 
   
         `docker run --rm -d -e MYSQL_ROOT_PASSWORD=root -p 3325:3306 --name customers_base_sql mysql:5.7`
+
+	* Conecte-se na base e rode o seguinte script 
+
+		`CREATE DATABASE customer	_base`
   
         `docker run --rm -d -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 --name products_base_sql mysql:5.7`
   
+	* Conecte-se na base e rode o seguinte script 
+
+		`CREATE DATABASE product_base`
+
   * suba os BDs de cache 
 
         `docker run -it --name customer_cache -p 6379:6379 redis:5.0.3`

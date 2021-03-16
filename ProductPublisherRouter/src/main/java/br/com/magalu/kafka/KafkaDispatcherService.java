@@ -1,4 +1,4 @@
-package br.com.magalu.kafka.impl;
+package br.com.magalu.kafka;
 
 
 import java.util.Properties;
@@ -11,10 +11,8 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.stereotype.Service;
 
-import br.com.magalu.kafka.KafkaDispacherService;
-
 @Service
-public class KafkaDispatcherService implements KafkaDispacherService{
+public class KafkaDispatcherService {
 
 	private final KafkaProducer<String, String> producer;
 
@@ -45,3 +43,4 @@ public class KafkaDispatcherService implements KafkaDispacherService{
 		
 	}
 }
+

@@ -30,13 +30,13 @@ public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	private TransactionRedisRepository transactionRedisRepository;
 
+	
 	@Override
 	public void save(ConsumerRecord<String, Customer> customer) {
 
 		if (!isEmailValid(customer.value())) {
-			var transaction = new TransactionRedisEntity(customer.key(), TransactionEnum.DENIED.toString(),
-					"Email alredy user in database");
-			transactionRedisRepository.save(transaction);
+			
+			transactionControl("Email alredy user in database", customer.key(), TransactionEnum.DENIED);
 
 		} else {
 			var redisEntity = new CustomerRedisEntity(customer.value());
@@ -45,11 +45,9 @@ public class CustomerServiceImpl implements CustomerService {
 			var entity = new CustomerEntity(customer.value(), redisSavedData.getId());
 			repository.save(entity);
 
-			var transaction = new TransactionRedisEntity(customer.key(), TransactionEnum.SUCCESS.toString(),
-					"Data saved successfully");
-			transactionRedisRepository.save(transaction);
+			transactionControl("Data saved successfully", customer.key(), TransactionEnum.SUCCESS);
+			
 		}
-
 	}
 
 	@Override
@@ -58,6 +56,8 @@ public class CustomerServiceImpl implements CustomerService {
 		getDataFromRedis(customer.value()).forEach(customrRedisRepository::delete);
 
 		repository.deleteByEmail(customer.value().getEmail());
+		
+		transactionControl("Data deleted successfully", customer.key(), TransactionEnum.SUCCESS);
 	}
 
 	@Override
@@ -73,6 +73,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 		repository.update(customer.value().getEmail(), customer.value().getNome());
 
+		transactionControl("Data updated successfully", customer.key(), TransactionEnum.SUCCESS);
 	}
 
 	private List<CustomerRedisEntity> getDataFromRedis(Customer data) {
@@ -99,6 +100,11 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 
 		return isValid;
+	}
+	
+	private void transactionControl(String message, String key, TransactionEnum status) {
+		var transaction = new TransactionRedisEntity(key, status.toString(), message);
+		transactionRedisRepository.save(transaction);
 	}
 
 }
